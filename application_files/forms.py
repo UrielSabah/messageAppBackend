@@ -74,35 +74,3 @@ class SendMsgForm(FlaskForm):
         receiverExist = (bool(User.query.filter_by(username=receiver.data).first()))
         if not receiverExist:
             raise ValidationError('That User dont exist. Please choose a registered user.')
-
-
-
-
-
-
-
-
-    # def validate_username(self, username):
-    #     user_object = User.query.filter_by(username=username.data).first()
-    #     if user_object:
-    #         raise ValidationError("Username already exists. Select a different username.")
-
-# class LoginForm(FlaskForm):
-#     """ Login form """
-#
-#     username = StringField('username', validators=[InputRequired(message="Username required")])
-#     password = PasswordField('password', validators=[InputRequired(message="Password required"), invalid_credentials])
-
-# def invalid_credentials(form, field):
-#     """ Username and password checker """
-#     username = form.username.data
-#     password = field.data
-#
-#     # Check username is invalid
-#     user_data = User.query.filter_by(username=username).first()
-#     if user_data is None:
-#         raise ValidationError("Username or password is incorrect")
-#
-#     # Check password in invalid
-#     # elif not pbkdf2_sha256.verify(password, user_data.hashed_pswd):
-#     #     raise ValidationError("Username or password is incorrect")
